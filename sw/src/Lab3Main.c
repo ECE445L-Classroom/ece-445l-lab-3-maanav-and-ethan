@@ -45,7 +45,7 @@
 #include "../inc/time.h"
 #include "../inc/speaker.h"
 
-#define Sqr_wave_freq 40000000
+#define Sqr_wave_freq 80000
 // ---------- Prototypes   -------------------------
 void WaitForInterrupt(void);  // low power mode
 void DisableInterrupts(void);
@@ -64,11 +64,11 @@ int main(void){
   // write this
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
+  PortB_Init();//init pb1 for speaker square wave
   UART_Init();
   Timer0A_Init(itsBeenOneSec, 80000000, 1);
   Timer1A_Init(HeartBeat, 40000000, 6);
-  //Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
-  //PortB_Init();//init pb1 for speaker square wave
+  Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
   CurrentTime_Init(0,0,0, &currentTime);
   EnableInterrupts();
   while(1){
