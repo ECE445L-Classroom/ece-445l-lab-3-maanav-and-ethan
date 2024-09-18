@@ -63,7 +63,7 @@ char currentTime_str[10];
 int main(void){
   DisableInterrupts();
   // write this
-  PLL_Init(Bus80MHz);    // bus clock at 80 MHz
+  //PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
   PortB_Init();//init pb1 for speaker square wave
   UART_Init();
