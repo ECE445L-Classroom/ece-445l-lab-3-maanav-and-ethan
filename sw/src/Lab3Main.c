@@ -38,13 +38,18 @@
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/Timer0A.h"
 #include "Lab3.h"
+#include "../inc/LaunchPad.h"
 // ---------- Prototypes   -------------------------
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void WaitForInterrupt(void);  // low power mode
+void HeartBeat(void);
+
 int main(void){
   DisableInterrupts();
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
+  LaunchPad_Init();
+  Timer0A_Init(HeartBeat, 80000000, 6);
   // write this
   EnableInterrupts();
   while(1){
@@ -52,3 +57,6 @@ int main(void){
   }
 }
 
+void HeartBeat(void){
+  GPIO_PORTF_DATA_R ^= 0x02;
+}
