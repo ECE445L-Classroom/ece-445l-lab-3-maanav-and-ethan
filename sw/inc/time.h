@@ -19,4 +19,4 @@ void CurrentTime_Init(int16_t hours_Init, int16_t minutes_Init, int16_t seconds_
 //returns a null term string with hours:mintues:seconds:
 void convert_CurrentTime_toStr(timeVal* currentTime, char currentTime_str[10]);
 
-#endif // TIME_H
+#endif 

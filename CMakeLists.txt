@@ -31,6 +31,7 @@ set(SRC_FILES
   sw/src/LaunchPad.c
   sw/src/Timer0A.c
   sw/src/Timer1A.c
+  sw/src/Timer2A.c
   sw/src/ST7735.c
   sw/src/Lab3Main.c
   sw/src/speaker.c

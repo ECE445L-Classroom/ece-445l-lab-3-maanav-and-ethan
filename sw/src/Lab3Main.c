@@ -37,13 +37,15 @@
 #include "Lab3.h"
 #include "../inc/ST7735.h"
 #include "../inc/PLL.h"
-#include "../inc/Timer0A.h"
 #include "../inc/LaunchPad.h"
-#include "../inc/time.h"
 #include "../inc/UART.h"
-//#include "../inc/SysTick.h"
+#include "../inc/Timer0A.h"
 #include "../inc/Timer1A.h"
+#include "../inc/Timer2A.h"
+#include "../inc/time.h"
+#include "../inc/speaker.h"
 
+#define Sqr_wave_freq 40000000
 // ---------- Prototypes   -------------------------
 void WaitForInterrupt(void);  // low power mode
 void DisableInterrupts(void);
@@ -62,9 +64,11 @@ int main(void){
   // write this
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
-  Timer0A_Init(itsBeenOneSec, 80000000, 2);
-  Timer1A_Init(HeartBeat, 40000000, 6);
   UART_Init();
+  Timer0A_Init(itsBeenOneSec, 80000000, 1);
+  Timer1A_Init(HeartBeat, 40000000, 6);
+  Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
+  PortB_Init();//init pb1 for speaker square wave
   CurrentTime_Init(0,0,0, &currentTime);
   EnableInterrupts();
   while(1){
