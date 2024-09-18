@@ -30,6 +30,7 @@ set(SRC_FILES
   sw/src/PLL.c
   sw/src/LaunchPad.c
   sw/src/Timer0A.c
+  sw/src/Timer1A.c
   sw/src/ST7735.c
   sw/src/Lab3Main.c
   sw/src/speaker.c
@@ -37,6 +38,7 @@ set(SRC_FILES
   sw/src/time.c
   sw/src/display.c
   sw/src/UART.c
+  sw/src/SysTick.c
 )
 
 # Add the executable using the SRC_FILES variable

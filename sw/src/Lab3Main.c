@@ -41,24 +41,29 @@
 #include "../inc/LaunchPad.h"
 #include "../inc/time.h"
 #include "../inc/UART.h"
+//#include "../inc/SysTick.h"
+#include "../inc/Timer1A.h"
 
 // ---------- Prototypes   -------------------------
 void WaitForInterrupt(void);  // low power mode
-void Timer_Increment(void);
-void itsBeenOneSec(void);
 void DisableInterrupts(void);
 void EnableInterrupts(void);
+void itsBeenOneSec(void);
+void HeartBeat(void);
+
 
 // ---------- Globals  -------------------------
 timeVal currentTime;
 char currentTime_str[10];
 
+// ---------- MAIN  -------------------------
 int main(void){
   DisableInterrupts();
   // write this
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
-  Timer0A_Init(itsBeenOneSec, 80000000, 6);
+  Timer0A_Init(itsBeenOneSec, 80000000, 2);
+  Timer1A_Init(HeartBeat, 40000000, 6);
   UART_Init();
   CurrentTime_Init(0,0,0, &currentTime);
   EnableInterrupts();
@@ -69,8 +74,11 @@ int main(void){
 
 
 void itsBeenOneSec(void){
-  GPIO_PORTF_DATA_R ^= 0x02;
   oneSecIncrement(&currentTime);
   convert_CurrentTime_toStr(&currentTime, currentTime_str);
   UART_OutString(currentTime_str);
+}
+
+void HeartBeat(void){
+  GPIO_PORTF_DATA_R ^= 0x02;
 }
