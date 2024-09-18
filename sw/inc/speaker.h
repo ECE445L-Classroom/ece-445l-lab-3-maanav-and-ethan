@@ -8,4 +8,6 @@ void PortB_Init(void);
 
 void PortB_Toggle(void);
 
+void SpeakerOff(void);
+
 #endif

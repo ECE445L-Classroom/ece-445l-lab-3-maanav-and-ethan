@@ -18,3 +18,7 @@ void PortB_Toggle(void){
     GPIO_PORTB_DATA_R ^= 0x02;
 }
 
+void SpeakerOff(void){
+    GPIO_PORTB_DATA_R |= 0x02;
+}
+

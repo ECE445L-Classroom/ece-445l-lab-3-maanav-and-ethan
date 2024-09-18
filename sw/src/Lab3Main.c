@@ -44,6 +44,7 @@
 #include "../inc/Timer2A.h"
 #include "../inc/time.h"
 #include "../inc/speaker.h"
+#include "../inc/display.h"
 
 #define Sqr_wave_freq 80000
 // ---------- Prototypes   -------------------------
@@ -66,6 +67,7 @@ int main(void){
   LaunchPad_Init();
   PortB_Init();//init pb1 for speaker square wave
   UART_Init();
+  display_init();
   Timer0A_Init(itsBeenOneSec, 80000000, 1);
   Timer1A_Init(HeartBeat, 40000000, 6);
   Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
