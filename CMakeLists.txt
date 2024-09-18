@@ -36,6 +36,7 @@ set(SRC_FILES
   sw/src/switches.c
   sw/src/time.c
   sw/src/display.c
+  sw/src/UART.c
 )
 
 # Add the executable using the SRC_FILES variable

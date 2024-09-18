@@ -33,30 +33,44 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include "../inc/tm4c123gh6pm.h"
+#include "Lab3.h"
 #include "../inc/ST7735.h"
 #include "../inc/PLL.h"
-#include "../inc/tm4c123gh6pm.h"
 #include "../inc/Timer0A.h"
-#include "Lab3.h"
 #include "../inc/LaunchPad.h"
+#include "../inc/time.h"
+#include "../inc/UART.h"
+
 // ---------- Prototypes   -------------------------
-void DisableInterrupts(void); // Disable interrupts
-void EnableInterrupts(void);  // Enable interrupts
 void WaitForInterrupt(void);  // low power mode
-void HeartBeat(void);
+void Timer_Increment(void);
+void itsBeenOneSec(void);
+void DisableInterrupts(void);
+void EnableInterrupts(void);
+
+// ---------- Globals  -------------------------
+timeVal currentTime;
+char currentTime_str[10];
 
 int main(void){
   DisableInterrupts();
+  // write this
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
-  Timer0A_Init(HeartBeat, 80000000, 6);
-  // write this
+  Timer0A_Init(itsBeenOneSec, 80000000, 6);
+  UART_Init();
+  CurrentTime_Init(0,0,0, &currentTime);
   EnableInterrupts();
   while(1){
       // write this
   }
 }
 
-void HeartBeat(void){
+
+void itsBeenOneSec(void){
   GPIO_PORTF_DATA_R ^= 0x02;
+  oneSecIncrement(&currentTime);
+  convert_CurrentTime_toStr(&currentTime, currentTime_str);
+  UART_OutString(currentTime_str);
 }
