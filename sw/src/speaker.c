@@ -3,6 +3,9 @@
 #include <stdint.h>
 
 //making PB1 digital output pin
+
+void PortB_Toggle(void);
+
 void PortB_Init(void){
     SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
     while((SYSCTL_PRGPIO_R&SYSCTL_PRGPIO_R1) == 0){};
@@ -12,6 +15,10 @@ void PortB_Init(void){
     GPIO_PORTB_DEN_R |= 0x02;//make it digital
     GPIO_PORTB_DIR_R |= 0x02;//make it out out
     GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF0F);
+}
+
+void SpeakerOn(void){
+    PortB_Toggle();
 }
 
 void PortB_Toggle(void){

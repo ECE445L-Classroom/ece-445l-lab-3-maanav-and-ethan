@@ -69,7 +69,7 @@ int main(void){
   //display_init();
   Timer0A_Init(itsBeenOneSec, 80000000, 1);
   Timer1A_Init(HeartBeat, 40000000, 6);
-  Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);//output to speaker
+  Timer2A_Init(SpeakerOn, Sqr_wave_freq, 2);//output to speaker
   CurrentTime_Init(0,0,0, &currentTime);//set the initial time
   EnableInterrupts();
   UART_Init();

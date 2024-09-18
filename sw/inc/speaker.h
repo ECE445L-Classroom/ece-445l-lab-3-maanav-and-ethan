@@ -6,7 +6,7 @@
 
 void PortB_Init(void);
 
-void PortB_Toggle(void);
+void SpeakerOn(void);
 
 void SpeakerOff(void);
 

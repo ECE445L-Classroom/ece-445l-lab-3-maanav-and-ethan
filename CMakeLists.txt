@@ -56,4 +56,3 @@ add_custom_command(TARGET exe.elf POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/*.o ${CMAKE_BINARY_DIR}/*.d
     COMMENT "Removing object and dependency files"
 )
-
