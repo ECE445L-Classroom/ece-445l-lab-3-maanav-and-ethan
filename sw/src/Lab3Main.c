@@ -66,13 +66,13 @@ int main(void){
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
   PortB_Init();//init pb1 for speaker square wave
-  UART_Init();
-  display_init();
+  //display_init();
   Timer0A_Init(itsBeenOneSec, 80000000, 1);
   Timer1A_Init(HeartBeat, 40000000, 6);
-  Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
-  CurrentTime_Init(0,0,0, &currentTime);
+  Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);//output to speaker
+  CurrentTime_Init(0,0,0, &currentTime);//set the initial time
   EnableInterrupts();
+  UART_Init();
   while(1){
       // write this
   }
@@ -82,8 +82,9 @@ int main(void){
 void itsBeenOneSec(void){
   oneSecIncrement(&currentTime);
   convert_CurrentTime_toStr(&currentTime, currentTime_str);
-  ST7735_OutString(currentTime_str);
-	ST7735_SetCursor(32, 32);
+  // ST7735_OutString(currentTime_str);
+	// ST7735_SetCursor(32, 32);
+  UART_OutString(currentTime_str);
 }
 
 void HeartBeat(void){
