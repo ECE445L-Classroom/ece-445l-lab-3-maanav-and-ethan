@@ -63,7 +63,7 @@ char currentTime_str[10];
 int main(void){
   DisableInterrupts();
   // write this
-  //PLL_Init(Bus80MHz);    // bus clock at 80 MHz
+  PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
   PortB_Init();//init pb1 for speaker square wave
   UART_Init();
@@ -82,7 +82,8 @@ int main(void){
 void itsBeenOneSec(void){
   oneSecIncrement(&currentTime);
   convert_CurrentTime_toStr(&currentTime, currentTime_str);
-  UART_OutString(currentTime_str);
+  ST7735_OutString(currentTime_str);
+	ST7735_SetCursor(32, 32);
 }
 
 void HeartBeat(void){

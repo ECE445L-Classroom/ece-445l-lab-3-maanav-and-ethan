@@ -48,7 +48,7 @@ void convert_CurrentTime_toStr(timeVal* currentTime, char currentTime_str[10]){
         currentTime_str[inttostr_idx] = ':';
         inttostr_idx++;
     }
-    currentTime_str[inttostr_idx-1] = '\n';
+    currentTime_str[inttostr_idx-1] = '\0';
     currentTime_str[inttostr_idx] = '\0';
 
 }
