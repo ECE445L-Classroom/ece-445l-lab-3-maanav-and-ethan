@@ -5,9 +5,11 @@
 char init_message[] = "hello";
 
 void display_init(){
-    ST7735_InitR(INITR_REDTAB);
+    Output_Init();
     //ST7735_InvertColors(False);
-    ST7735_SetCursor(0,0);
-    ST7735_OutString(init_message);
+    ST7735_DrawCharS(32, 32, 'p', 0xFFFF, 0, 2);
+    
 }
+
+
 
