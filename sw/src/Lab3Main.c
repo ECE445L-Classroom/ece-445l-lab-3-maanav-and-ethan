@@ -67,8 +67,8 @@ int main(void){
   UART_Init();
   Timer0A_Init(itsBeenOneSec, 80000000, 1);
   Timer1A_Init(HeartBeat, 40000000, 6);
-  Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
-  PortB_Init();//init pb1 for speaker square wave
+  //Timer2A_Init(PortB_Toggle, Sqr_wave_freq, 2);
+  //PortB_Init();//init pb1 for speaker square wave
   CurrentTime_Init(0,0,0, &currentTime);
   EnableInterrupts();
   while(1){
