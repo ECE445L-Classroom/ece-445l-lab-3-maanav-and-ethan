@@ -4966,7 +4966,7 @@
 			)
 		)
 	)
-	(global_label "PC7"
+	(global_label "PD1"
 		(shape input)
 		(at 45.085 157.48 180)
 		(fields_autoplaced yes)
@@ -5142,7 +5142,7 @@
 			)
 		)
 	)
-	(global_label "PC4"
+	(global_label "PD0"
 		(shape input)
 		(at 35.56 157.48 180)
 		(fields_autoplaced yes)
@@ -5186,7 +5186,7 @@
 			)
 		)
 	)
-	(global_label "PC6"
+	(global_label "PD2"
 		(shape input)
 		(at 57.15 157.48 180)
 		(fields_autoplaced yes)
@@ -5406,7 +5406,7 @@
 			)
 		)
 	)
-	(global_label "PC5"
+	(global_label "PD3"
 		(shape input)
 		(at 67.31 157.48 180)
 		(fields_autoplaced yes)
@@ -5450,7 +5450,7 @@
 			)
 		)
 	)
-	(global_label "PF4"
+	(global_label "PD5"
 		(shape input)
 		(at 78.74 157.48 180)
 		(fields_autoplaced yes)
@@ -5462,7 +5462,7 @@
 		)
 		(uuid "b45a9367-d3ec-4a75-900e-10e763fa565e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.1867 157.48 0)
+			(at 72.0053 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
