@@ -103,5 +103,5 @@ void screen_setup_init(void){
     ST7735_DrawString(0,0, "Mode-> ", global_text_color);
     convert_Mode_toStr(currentMode, currentMode_str);
     ST7735_DrawString(7,0, currentMode_str, global_text_color);
-    ST7735_DrawBitmap(24,130,clock_bitmap, 80, 80);
+   ST7735_DrawBitmap(24,130,clock_bitmap, 80, 80);
 }
