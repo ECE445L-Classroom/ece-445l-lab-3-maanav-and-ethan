@@ -7,6 +7,7 @@ char init_message[] = "hello";
 void display_init(){
     Output_Init();
 	ST7735_SetRotation(0);
+    //ST7735_InvertDisplay(1);
 	//ST7735_OutString(init_message);
 }
 

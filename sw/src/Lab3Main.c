@@ -62,6 +62,7 @@ timeVal currentTime;
 char currentTime_str[10];
 enum Mode currentMode;
 char currentMode_str[Length_Longest_Mode+1];
+uint16_t global_text_color;
 // ---------- MAIN  -------------------------
 int main(void){
   DisableInterrupts();
@@ -69,11 +70,11 @@ int main(void){
   LaunchPad_Init();//onboard leds and buttons
   PortB_Init();//pb1 for sqaure wave
   display_init();//init lcd
-  screen_setup_init();//setting up initial screen layout
-  global_Variable_Init();
   Timer0A_Init(itsBeenOneSec_Clock, 80000000, 0);//starts the global clock
   Timer1A_Init(HeartBeat, 40000000, 7);//heardbeat
   Timer2A_Init(SpeakerOn, Sqr_wave_freq, 6);//output to speaker
+  global_Variable_Init();
+  screen_setup_init();//setting up initial screen layout
   EnableInterrupts();
   while(1){
       //nothign yet
@@ -83,7 +84,7 @@ int main(void){
 void itsBeenOneSec_Clock(void){
   oneSecIncrement(&currentTime);
   convert_Time_toStr(&currentTime, currentTime_str);
-  ST7735_DrawString(7, 2, currentTime_str, ST7735_WHITE);
+  ST7735_DrawString(7, 2, currentTime_str, global_text_color);
 }
 
 void HeartBeat(void){
@@ -94,12 +95,13 @@ void global_Variable_Init(void){
   SetTime_Init(0,0,0,&currentTime);//set the initial time on clock start up
   GPIO_PORTF_DATA_R |= 0x02;//to make led light up on seconds
   currentMode = Clock;
+  global_text_color = ST7735_WHITE;
 }
 
 void screen_setup_init(void){
-    ST7735_DrawString(0, 2, "Time-> ", ST7735_WHITE);
-    ST7735_DrawString(0,0, "Mode-> ", ST7735_WHITE);
+    ST7735_DrawString(0, 2, "Time-> ", global_text_color);
+    ST7735_DrawString(0,0, "Mode-> ", global_text_color);
     convert_Mode_toStr(currentMode, currentMode_str);
-    ST7735_DrawString(7,0, currentMode_str, ST7735_WHITE);
+    ST7735_DrawString(7,0, currentMode_str, global_text_color);
     ST7735_DrawBitmap(24,130,clock_bitmap, 80, 80);
 }
