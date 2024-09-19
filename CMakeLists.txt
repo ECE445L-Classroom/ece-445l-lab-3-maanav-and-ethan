@@ -18,7 +18,7 @@ set(CMAKE_C_FLAGS "${CPU_FLAGS} ${FPU_FLAGS} -mthumb -Os -ffunction-sections -fd
 set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS}")
 
 # Set the linker flags
-set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/tm4c123.ld)
+set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/tm4c123gh6pm.ld)
 set(CMAKE_EXE_LINKER_FLAGS "${CPU_FLAGS} ${FPU_FLAGS} -mthumb -Wl,--gc-sections -T ${LINKER_SCRIPT}")
 
 # Include directories

@@ -66,7 +66,7 @@ int main(void){
   PLL_Init(Bus80MHz);    // bus clock at 80 MHz
   LaunchPad_Init();
   PortB_Init();//init pb1 for speaker square wave
-  //display_init();
+  display_init();
   Timer0A_Init(itsBeenOneSec, 80000000, 1);
   Timer1A_Init(HeartBeat, 40000000, 6);
   Timer2A_Init(SpeakerOn, Sqr_wave_freq, 2);//output to speaker
