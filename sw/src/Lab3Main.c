@@ -62,6 +62,7 @@ timeVal currentTime;
 char currentTime_str[10];
 enum Mode currentMode;
 char currentMode_str[Length_Longest_Mode+1];
+uint16_t global_color = ST7735_YELLOW;
 // ---------- MAIN  -------------------------
 int main(void){
   DisableInterrupts();
@@ -83,7 +84,7 @@ int main(void){
 void itsBeenOneSec_Clock(void){
   oneSecIncrement(&currentTime);
   convert_Time_toStr(&currentTime, currentTime_str);
-  ST7735_DrawString(7, 2, currentTime_str, ST7735_WHITE);
+  ST7735_DrawString(7, 2, currentTime_str, global_color);
 }
 
 void HeartBeat(void){
@@ -97,9 +98,9 @@ void global_Variable_Init(void){
 }
 
 void screen_setup_init(void){
-    ST7735_DrawString(0, 2, "Time-> ", ST7735_WHITE);
-    ST7735_DrawString(0,0, "Mode-> ", ST7735_WHITE);
+    ST7735_DrawString(0, 2, "Time-> ", global_color);
+    ST7735_DrawString(0,0, "Mode-> ", global_color);
     convert_Mode_toStr(currentMode, currentMode_str);
-    ST7735_DrawString(7,0, currentMode_str, ST7735_WHITE);
+    ST7735_DrawString(7,0, currentMode_str, global_color);
     ST7735_DrawBitmap(24,130,clock_bitmap, 80, 80);
 }
